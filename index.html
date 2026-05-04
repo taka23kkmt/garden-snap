@@ -1,0 +1,390 @@
+        :root {
+            --primary: #2d5a27;
+            --secondary: #4a7c44;
+            --accent: #8bc34a;
+            --bg: #f8fcf8;
+            --text: #1a2e1a;
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background: #eef5ee;
+            color: var(--text);
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background: white;
+            box-shadow: 0 0 40px rgba(0,0,0,0.1);
+        }
+
+        /* Splash Screen */
+        #splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease-out;
+            color: white;
+        }
+
+        #splash h1 {
+            font-size: 2.5rem;
+            margin-top: 20px;
+            letter-spacing: 2px;
+        }
+
+        header {
+            padding: 15px 20px;
+            background: white;
+            color: var(--primary);
+            text-align: left;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+        }
+
+        .hero {
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(rgba(45, 90, 39, 0.7), rgba(45, 90, 39, 0.7)), url('/C:/Users/sjrkp/.gemini/antigravity/brain/ab949df6-e805-4aa7-9ded-000e13072db3/garden_app_bg_1777896268130.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .camera-btn {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: -35px auto 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
+        }
+
+        .camera-btn svg {
+            width: 35px;
+            height: 35px;
+            fill: var(--primary);
+        }
+
+        .main-content {
+            padding: 25px 20px;
+            flex-grow: 1;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            border: 1px solid #f0f0f0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .card-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .card-info h4 {
+            margin-bottom: 4px;
+            color: #333;
+        }
+
+        .card-info p {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .result-view {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 200;
+            overflow-y: auto;
+        }
+
+        .plant-hero {
+            height: 40vh;
+            position: relative;
+        }
+
+        .plant-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .plant-content {
+            padding: 30px 20px;
+            margin-top: -30px;
+            background: white;
+            border-radius: 30px 30px 0 0;
+            position: relative;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .info-box {
+            background: #f7faf7;
+            padding: 20px;
+            border-radius: 18px;
+            border: 1px solid #edf2ed;
+        }
+
+        .info-box h5 {
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .info-box p {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            backdrop-filter: blur(5px);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="splash">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="white">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z"/>
+        </svg>
+        <h1>GardenSnap</h1>
+    </div>
+
+    <div class="container">
+        <header>
+            <h2 style="font-size: 1.4rem;">GardenSnap</h2>
+            <svg width="24" height="24" fill="var(--primary)" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+        </header>
+
+        <div id="home-view">
+            <div class="hero">
+                <h1>植物を撮って<br>名前を知ろう</h1>
+                <p>カメラを向けるだけで、<br>お手入れ方法がわかります</p>
+            </div>
+
+            <div class="camera-btn" id="start-camera">
+                <svg viewBox="0 0 24 24">
+                    <path d="M4 4h3l2-2h6l2 2h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm8 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0-2a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                </svg>
+            </div>
+
+            <div class="main-content">
+                <div class="section-title">最近の履歴</div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1522383225653-ed111181a951?auto=format&fit=crop&q=60&w=150" class="card-img" alt="">
+                    <div class="card-info">
+                        <h4>ソメイヨシノ</h4>
+                        <p>1時間前 ・ 庭の木</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1508784411316-02b8cd4d3a3a?auto=format&fit=crop&q=60&w=150" class="card-img" alt="">
+                    <div class="card-info">
+                        <h4>アジサイ</h4>
+                        <p>昨日 ・ 散歩道</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="loading-view" class="loader" style="display:none; text-align:center; padding: 100px 20px;">
+            <div class="spinner"></div>
+            <h3 style="margin-top: 20px; color: var(--primary);">画像をスキャン中...</h3>
+            <p style="color: #888; font-size: 0.9rem;">葉っぱの形を分析しています</p>
+        </div>
+
+        <div id="result-view" class="result-view">
+            <div class="plant-hero">
+                <div class="close-btn" id="back-home">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </div>
+                <img id="plant-img" src="" alt="Plant">
+            </div>
+            <div class="plant-content">
+                <h1 id="plant-name" style="font-size: 1.8rem; margin-bottom: 10px; color: var(--primary);">植物名</h1>
+                <p id="plant-desc" style="line-height: 1.6; color: #555;">特徴の説明...</p>
+                
+                <div class="info-grid">
+                    <div class="info-box">
+                        <h5>開花時期</h5>
+                        <p id="bloom-time">3月〜4月</p>
+                    </div>
+                    <div class="info-box">
+                        <h5>剪定時期</h5>
+                        <p id="prune-time">12月〜2月</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <h5 style="color: #888; font-size: 0.75rem; margin-bottom: 15px; text-transform: uppercase;">お手入れメモ</h5>
+                    <div style="background: #fff9e6; padding: 15px; border-radius: 12px; border-left: 4px solid #ffc107;">
+                        <p style="font-size: 0.85rem; color: #856404;">この時期は害虫に注意が必要です。風通しを良くしておきましょう。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <input type="file" id="camera-input" accept="image/*" capture="environment" style="display: none;">
+    </div>
+
+    <script>
+        // Hide splash after 2 seconds
+        setTimeout(() => {
+            document.getElementById('splash').style.opacity = '0';
+            setTimeout(() => document.getElementById('splash').style.display = 'none', 500);
+        }, 2000);
+
+        const plants = {
+            sakura: {
+                name: "ソメイヨシノ",
+                desc: "日本の春を象徴する桜。淡いピンクの花が枝いっぱいに咲き誇ります。成長が早く、剪定には注意が必要です。",
+                bloom: "3月下旬 〜 4月上旬",
+                prune: "12月 〜 2月",
+                img: "https://images.unsplash.com/photo-1522383225653-ed111181a951?auto=format&fit=crop&q=80&w=800"
+            },
+            ajisai: {
+                name: "アジサイ",
+                desc: "梅雨時期に美しい花を咲かせます。土壌が酸性なら青、アルカリ性なら赤系の花になります。",
+                bloom: "6月 〜 7月",
+                prune: "7月下旬 (花後すぐ)",
+                img: "https://images.unsplash.com/photo-1508784411316-02b8cd4d3a3a?auto=format&fit=crop&q=80&w=800"
+            },
+            matsu: {
+                name: "クロマツ",
+                desc: "海岸近くに多く自生する、力強い姿の松。庭木としても非常に人気があり、定期的な手入れで形を整えます。",
+                bloom: "4月 〜 5月",
+                prune: "5月 〜 6月 / 11月 〜 12月",
+                img: "https://images.unsplash.com/photo-1613143300732-835266838381?auto=format&fit=crop&q=80&w=800"
+            }
+        };
+
+        const startBtn = document.getElementById('start-camera');
+        const fileInput = document.getElementById('camera-input');
+        const homeView = document.getElementById('home-view');
+        const loadingView = document.getElementById('loading-view');
+        const resultView = document.getElementById('result-view');
+        const backBtn = document.getElementById('back-home');
+
+        startBtn.onclick = () => fileInput.click();
+
+        fileInput.onchange = (e) => {
+            if (e.target.files && e.target.files[0]) {
+                homeView.style.display = 'none';
+                loadingView.style.display = 'block';
+
+                setTimeout(() => {
+                    const keys = Object.keys(plants);
+                    const randomPlant = plants[keys[Math.floor(Math.random() * keys.length)]];
+                    
+                    document.getElementById('plant-name').innerText = randomPlant.name;
+                    document.getElementById('plant-desc').innerText = randomPlant.desc;
+                    document.getElementById('bloom-time').innerText = randomPlant.bloom;
+                    document.getElementById('prune-time').innerText = randomPlant.prune;
+                    document.getElementById('plant-img').src = randomPlant.img;
+
+                    loadingView.style.display = 'none';
+                    resultView.style.display = 'block';
+                }, 2000);
+            }
+        };
+
+        backBtn.onclick = () => {
+            resultView.style.display = 'none';
+            homeView.style.display = 'block';
+            fileInput.value = '';
+        };
+
+        // PWA Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').then(reg => {
+                    console.log('SW registered!', reg);
+                }).catch(err => {
+                    console.log('SW registration failed:', err);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
+
